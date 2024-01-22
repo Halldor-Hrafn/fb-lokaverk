@@ -1,0 +1,1 @@
+This folder contains all the PL/pgSQL scripts used.
