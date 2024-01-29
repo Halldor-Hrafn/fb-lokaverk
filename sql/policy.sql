@@ -6,15 +6,10 @@ CREATE POLICY "Everyone can read courses" ON public.courses
     FOR SELECT
     USING (true);
 
-CREATE POLICY "Admins can create courses" ON public.courses
+CREATE POLICY "Authenticated can create courses" ON public.courses
     FOR INSERT
-    WITH CHECK (
-        EXISTS (
-            SELECT 1
-            FROM public.admins
-            WHERE admins.user_id = auth.uid()::UUID -- pray to god this is how policies work
-        )
-    )
+    TO authenticated
+    WITH CHECK (true);
 
 CREATE POLICY "Everyone can read notes" ON public.notes
     FOR SELECT
