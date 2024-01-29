@@ -3,23 +3,9 @@ CREATE TABLE IF NOT EXISTS public.courses (
     created_at TIMESTAMP NOT NULL DEFAULT now(),
     title TEXT NOT NULL,
     initials TEXT NOT NULL,
-    version SMALLINT NOT NULL,
-    subject TEXT NOT NULL,
-    topic TEXT NOT NULL,
-    status TEXT NOT NULL,
-    stage TEXT NOT NULL,
-    number_of_credits SMALLINT NOT NULL,
-    -- school?
-    description TEXT NOT NULL,
-    prerequisites TEXT NULL,
-    criteria TEXT NOT NULL,
-    expected_end_result TEXT NOT NULL,
-    expected_end_qualification TEXT NOT NULL,
-    course_assessment TEXT NOT NULL,
-    schools TEXT NOT NULL,
-    is_exemplary BOOLEAN NOT NULL DEFAULT false,
+    link TEXT NULL,
 
-    CONSTRAINT courses_pkey PRIMARY KEY (id)
+    CONSTRAINT courses_pkey PRIMARY KEY (id),
     CONSTRAINT courses_initials_unique UNIQUE (initials)
 ) TABLESPACE pg_default;
 
