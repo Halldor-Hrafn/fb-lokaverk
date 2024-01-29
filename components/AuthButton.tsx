@@ -17,6 +17,11 @@ export default async function AuthButton() {
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
     await supabase.auth.signOut();
+
+    cookieStore.getAll().forEach((cookie) => {
+      cookieStore.delete(cookie.name);
+    })
+
     return redirect("/login");
   };
 
