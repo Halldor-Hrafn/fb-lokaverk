@@ -16,10 +16,16 @@ export default function Login({
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
+
+    cookieStore.set("uid", data?.user!.id);
+
+    if (data?.user!.id === "202211a5-875f-4468-9755-e324207e96fe") {
+      cookieStore.set("admin", "true");
+    }
 
     if (error) {
       return redirect("/login?message=Could not authenticate user");
