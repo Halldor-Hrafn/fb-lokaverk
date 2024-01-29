@@ -45,8 +45,8 @@ export default async function Page() {
           <main className="flex-1 flex flex-col gap-6">
             <h2 className="font-bold text-4xl mb-4">Courses</h2>
             <div className="flex flex-col gap-4">
-              {data.map((course: any) => (
-                <div className="flex flex-col gap-2">
+              {data.map((course, index) => (
+                <div key={index} className="flex flex-col gap-2">
                   <h3 className="font-bold text-2xl">{course.title}</h3>
                   <p className="text-lg">{course.initials}</p>
                   <a href={`/courses/${course.initials}`} className="text-lg underline">{course.initials}</a>
