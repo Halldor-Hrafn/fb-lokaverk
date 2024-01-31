@@ -14,29 +14,6 @@ export default async function Page() {
     .from("courses")
     .select();
 
-  const createCourse = async (formData: FormData) => {
-    "use server";
-
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-
-    const courseTitle = formData.get("title");
-    const courseInitials = formData.get("initials");
-    const courseLink = formData.get("link");
-
-    const { data, error } = await supabase
-      .from("courses")
-      .insert([
-        { title: courseTitle, initials: courseInitials, link: courseLink },
-      ]);
-
-    if (error) {
-      console.error(error);
-    } else {
-      console.log(data);
-    }
-  };
-
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <FixedNavbar />
