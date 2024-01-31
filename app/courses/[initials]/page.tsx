@@ -3,6 +3,10 @@ import CreateNote from "@/components/CreateNote";
 
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
+import Markdown from "react-markdown"
+import remarkGfm from "remark-gfm";
+
+import mdStyles from "./markdown.module.css"
 
 export default async function Page({ params }: { params: { initials: string } }) {
   const cookieStore = cookies();
@@ -31,7 +35,7 @@ export default async function Page({ params }: { params: { initials: string } })
               {data?.map((note, index) => (
                 <div key={index} className="border-b border-gray-200 py-4">
                   <h3 className="text-xl font-semibold">{note.title}</h3>
-                  <p className="text-gray-700">{note.note}</p>
+                  <Markdown className={mdStyles.markdown} remarkPlugins={[remarkGfm]}>{note.note}</Markdown>
                 </div>
               ))}
             </div>
