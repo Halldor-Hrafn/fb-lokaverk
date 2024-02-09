@@ -29,3 +29,11 @@ CREATE TABLE IF NOT EXISTS public.admins (
     CONSTRAINT admins_pkey PRIMARY KEY (id),
     CONSTRAINT admins_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users (id) ON DELETE CASCADE
 )
+
+CREATE TABLE IF NOT EXISTS public.profiles (
+    id UUID NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT now(),
+    username TEXT NOT NULL,
+
+    CONSTRAINT profiles_user_id_fkey FOREIGN KEY (id) REFERENCES auth.users (id) ON DELETE CASCADE
+);
