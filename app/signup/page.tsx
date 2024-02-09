@@ -12,6 +12,7 @@ export default function SignUp({
     "use server";
 
     const origin = headers().get("origin");
+    const username = formData.get("username") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const cookieStore = cookies();
@@ -24,6 +25,14 @@ export default function SignUp({
         emailRedirectTo: `${origin}/auth/callback`,
       },
     });
+
+    console.log(data, error);
+
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .insert({ email, username });
+
+    console.log(profileData, profileError);
 
     if (error) {
       return redirect("/signup?message=Could not authenticate user");
