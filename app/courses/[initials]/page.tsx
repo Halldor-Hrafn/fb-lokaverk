@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { initials: string } })
   }
 
   return (
-    <div className="w-full flex flex-col gap-20 items-center p-4">
+    <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <FixedNavbar />
       <CreateNote initial={params.initials} />
       {data && (
