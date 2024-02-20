@@ -1,5 +1,6 @@
 import FixedNavbar from "@/components/FixedNavbar";
 import CreateCourse from "@/components/CreateCourse";
+import Course from "@/components/Course";
 
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
@@ -23,12 +24,13 @@ export default async function Page() {
             <h2 className="font-bold text-4xl mb-4">Courses</h2>
             <div className="flex flex-col gap-4">
               {data.map((course, index) => (
-                <div key={index} className="flex flex-col gap-2">
-                  <h3 className="font-bold text-2xl">{course.title}</h3>
-                  <p className="text-lg">{course.initials}</p>
-                  <a href={`/courses/${course.initials}`} className="text-lg underline">{course.initials}</a>
-                  <a href={course.link} className="text-lg underline">{course.link}</a>
-                </div>
+                <Course
+                  key={index}
+                  index={index}
+                  title={course.title}
+                  initials={course.initials}
+                  link={course.link}
+                />
               ))}
             </div>
           </main>
