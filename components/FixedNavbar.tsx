@@ -11,6 +11,9 @@ const FixedNavbar: React.FC = () => {
         <a href="/courses" className="transition-transform duration-200 hover:scale-110">
           Courses
         </a>
+        <a href="/questions" className="transition-transform duration-200 hover:scale-110">
+          Questions
+        </a>
         <AuthButton />
       </div>
     </nav>
