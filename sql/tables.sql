@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     username TEXT NOT NULL,
 
     CONSTRAINT profiles_pkey PRIMARY KEY (id),
-    CONSTRAINT profiles_email_fkey FOREIGN KEY (email) REFERENCES auth.users (email) ON DELETE CASCADE
+    CONSTRAINT profiles_email_fkey FOREIGN KEY (user_email) REFERENCES auth.users (email) ON DELETE CASCADE
 ) TABLESPACE pg_default;
 
 CREATE TABLE public.questions (
