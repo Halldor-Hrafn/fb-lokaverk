@@ -22,6 +22,7 @@ export default function Login({
     });
 
     cookieStore.set("uid", data?.user!.id);
+    cookieStore.set("email", data?.user!.email!);
 
     if (data?.user!.id === "202211a5-875f-4468-9755-e324207e96fe") {
       cookieStore.set("admin", "true");
