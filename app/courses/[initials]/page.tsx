@@ -34,8 +34,7 @@ export default async function Page({ params }: { params: { initials: string } })
             <div>
               {data?.map((note, index) => (
                 <div key={index} className="border-b border-gray-200 py-4">
-                  <h3 className="text-xl font-semibold">{note.title}</h3>
-                  <Markdown className={mdStyles.markdown} remarkPlugins={[remarkGfm]}>{note.note}</Markdown>
+                  <Markdown className={mdStyles.markdown} remarkPlugins={[remarkGfm]}>{note.content}</Markdown>
                 </div>
               ))}
             </div>
