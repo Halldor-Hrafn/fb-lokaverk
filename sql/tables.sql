@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS public.notes (
     created_at TIMESTAMP NOT NULL DEFAULT now(),
     course_initials TEXT NULL,
     user_id UUID NULL,
-    note TEXT NOT NULL,
+    content TEXT NOT NULL,
 
     CONSTRAINT notes_pkey PRIMARY KEY (id),
     CONSTRAINT notes_course_initials_fkey FOREIGN KEY (course_initials) REFERENCES public.courses (initials) ON DELETE SET NULL,
