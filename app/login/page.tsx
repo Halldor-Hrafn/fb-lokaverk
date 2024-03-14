@@ -21,7 +21,13 @@ export default function Login({
       password,
     });
 
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .select()
+      .eq("user_email", email);
+
     cookieStore.set("uid", data?.user!.id);
+    cookieStore.set("profileUid", profileData![0].id!);
     cookieStore.set("email", data?.user!.email!);
 
     if (data?.user!.id === "202211a5-875f-4468-9755-e324207e96fe") {
@@ -34,30 +40,6 @@ export default function Login({
 
     return redirect("/");
   };
-
-  // const signUp = async (formData: FormData) => {
-  //   "use server";
-
-  //   const origin = headers().get("origin");
-  //   const email = formData.get("email") as string;
-  //   const password = formData.get("password") as string;
-  //   const cookieStore = cookies();
-  //   const supabase = createClient(cookieStore);
-
-  //   const { error } = await supabase.auth.signUp({
-  //     email,
-  //     password,
-  //     options: {
-  //       emailRedirectTo: `${origin}/auth/callback`,
-  //     },
-  //   });
-
-  //   if (error) {
-  //     return redirect("/login?message=Could not authenticate user");
-  //   }
-
-  //   return redirect("/login?message=Check email to continue sign in process");
-  // };
 
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
