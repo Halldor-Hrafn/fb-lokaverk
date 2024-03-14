@@ -16,12 +16,12 @@ const CreateNote: React.FC<NoteProps> = ({ initial }) => {
 
     const noteContent = formData.get("content");
     const noteInitial = initial;
-    const userEmail = cookieStore.get("email")?.value;
+    const profileId = cookieStore.get("profileUid")?.value;
 
     const { data, error } = await supabase
       .from("notes")
       .insert([
-        { content: noteContent, course_initials: noteInitial, user_email: userEmail },
+        { content: noteContent, course_initials: noteInitial, profile_id: profileId },
       ]);
 
     if (error) {
