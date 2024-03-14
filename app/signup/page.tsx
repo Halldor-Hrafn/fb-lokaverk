@@ -30,7 +30,7 @@ export default function SignUp({
 
     const { data: profileData, error: profileError } = await supabase
       .from("profiles")
-      .insert({ email, username });
+      .insert({ user_email: email, username });
 
     console.log(profileData, profileError);
 
