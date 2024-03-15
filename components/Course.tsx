@@ -17,5 +17,5 @@ const Course: React.FC<Props> = ({ index, title, initials, link}) => {
     </div>
   )
 }
-nlksajjflkajfjfkjshiwquioqhlkjcojfoijfoiejfoi
+
 export default Course;
