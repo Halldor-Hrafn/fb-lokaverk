@@ -17,7 +17,8 @@ export default async function Page({ params }: { params: { initials: string } })
   const { data, error} = await supabase
     .from("notes")
     .select()
-    .eq("course_initials", params.initials);
+    .eq("course_initials", params.initials)
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);
