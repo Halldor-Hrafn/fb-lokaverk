@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { initials: string } })
       <FixedNavbar />
       <CreateNote initial={params.initials} />
       {data && (
-        <div className="bg-white shadow rounded-lg p-6 w-full md:w-3/4 lg:w-1/2">
+        <div className="bg-inherit shadow rounded-lg p-6 w-full md:w-3/4 lg:w-1/2">
           <main>
             <h2 className="text-2xl font-bold mb-4">Notes for class: {decodeURIComponent(params.initials)}</h2>
             <div>

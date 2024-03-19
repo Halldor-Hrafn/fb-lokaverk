@@ -32,15 +32,15 @@ const CreateCourse: React.FC = () => {
       <form action={createCourse}>
         <div>
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" id="title" />
+          <input type="text" name="title" id="title" className="bg-inherit text-inherit border" />
         </div>
         <div>
           <label htmlFor="initials">Initials</label>
-          <input type="text" name="initials" id="initials" />
+          <input type="text" name="initials" id="initials" className="bg-inherit text-inherit border" />
         </div>
         <div>
           <label htmlFor="link">Link</label>
-          <input type="text" name="link" id="link" />
+          <input type="text" name="link" id="link" className="bg-inherit text-inherit border" />
         </div>
         <button type="submit">Submit</button>
       </form>
