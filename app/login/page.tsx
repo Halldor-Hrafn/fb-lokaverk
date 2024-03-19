@@ -30,7 +30,7 @@ export default function Login({
     cookieStore.set("profileUid", profileData![0].id!);
     cookieStore.set("email", data?.user!.email!);
 
-    if (data?.user!.id === "202211a5-875f-4468-9755-e324207e96fe") {
+    if (data?.user!.id === "64ba2c38-9cf6-4838-b146-d91521268a6f") {
       cookieStore.set("admin", "true");
     }
 
