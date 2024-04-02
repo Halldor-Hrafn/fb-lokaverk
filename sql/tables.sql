@@ -51,3 +51,15 @@ CREATE TABLE public.questions (
     CONSTRAINT questions_profile_id_fkey FOREIGN KEY (profile_id) REFERENCES public.profiles (id) ON DELETE SET NULL,
     CONSTRAINT questions_course_initials_fkey FOREIGN KEY (course_initials) REFERENCES public.courses (initials) ON DELETE CASCADE
 ) TABLESPACE pg_default;
+
+CREATE TABLE public.answers (
+    id UUID NOT NULL DEFAULT gen_random_uuid(),
+    created_at TIMESTAMP NOT NULL DEFAULT now(),
+    profile_id UUID NULL,
+    content TEXT NOT NULL,
+    question_id UUID NOT NULL,
+
+    CONSTRAINT answers_pkey PRIMARY KEY (id),
+    CONSTRAINT answers_profile_id_fkey FOREIGN KEY (profile_id) REFERENCES public.profiles (id) ON DELETE SET NULL,
+    CONSTRAINT answers_question_id_fkey FOREIGN KEY (question_id) REFERENCES public.questions (id) ON DELETE CASCADE
+) TABLESPACE pg_default;
